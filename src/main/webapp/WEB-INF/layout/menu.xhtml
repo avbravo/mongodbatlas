@@ -1,0 +1,55 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:h="http://xmlns.jcp.org/jsf/html"
+                xmlns:f="http://xmlns.jcp.org/jsf/core"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:pe="http://primefaces.org/ui/extensions"
+                xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+                xmlns:jsf="http://xmlns.jcp.org/jsf"
+                xmlns:b="http://bootsfaces.net/ui">
+
+
+
+    <aside id="left-sidebar-nav">
+        <ul id="slide-out" class="side-nav fixed leftside-navigation">
+            <!--<li class="user-details pink darken-3">-->
+            <li class="user-details left-menu">
+                <!--<li class="user-details cyan darken-2">-->
+
+
+
+                <div class="row">
+                    <div class="col col s4 m4 l4">
+                        <h:graphicImage library="jmoordbjsf" name="iconos/hombre48.png" 
+                                        styleClass="circle responsive-img valign profile-image" alt="" />
+                        <h:graphicImage library="jmoordbjsf" name="iconos/mujer48.png" rendered="#{accessController.user.sex eq 'Femenino'}"
+                                        styleClass="circle responsive-img valign profile-image" alt="" />
+                    </div>
+                    <div class="col col s8 m8 l8">
+
+                        <ui:include src="/WEB-INF/layout/menuprofile.xhtml" />
+
+
+                        <!--<p class="user-roal">Administrator</p>-->
+                    </div>
+                </div>
+
+
+
+            </li>
+
+            <li class="bold"><a href="index.xhtml"
+                                class="waves-effect waves-cyan"> <i class="material-icons">dashboard</i>
+                    Dashboard</a></li>
+
+
+            <ui:include src="/WEB-INF/layout/menuitems.xhtml" />
+        </ul>
+        <a href="#" data-activates="slide-out"
+           class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan"><i
+                class="mdi-navigation-menu"></i></a>
+    </aside>
+
+
+
+</ui:composition>
