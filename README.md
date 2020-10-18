@@ -27,7 +27,7 @@ java -jar -Xmx512m /home/avbravo/software/payara/payara-micro-5.2020.4.jar  --de
 
 JAR
 
-$ java -jar -Xmx512m autentificacion.jar --nocluster --logo --port 9001
+ java -jar -Xmx512m mongodbatlas.jar --nocluster --logo --port 8080
 
 Swagger
 http://avbravo:9001/autentificacion/resources/openapi-ui/index.html
