@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<ui:composition   template="/WEB-INF/layout/template.xhtml"
+                  xmlns="http://www.w3.org/1999/xhtml"
+                  xmlns:h="http://xmlns.jcp.org/jsf/html"
+                  xmlns:f="http://xmlns.jcp.org/jsf/core"
+                  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                  xmlns:p="http://primefaces.org/ui"
+                  xmlns:jmoordbjsf="http://jmoordbjsf.com/taglib">
+
+
+
+    <ui:define name="titulo">#{msg['title.pagina']} - #{msg['application.title']}</ui:define>
+
+    <ui:define name="contenido">
+        <h:outputStylesheet library="css" name="extras.css"/>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+
+        <p:messages  closable="true" >
+            <p:autoUpdate />
+        </p:messages>
+        <p:growl  />
+
+        <!-- START CONTENT -->
+        <section id="content">
+            <div class="container">
+
+                <!--**********************************************************************
+                                              Despues del Tema  
+                *************************************************************************-->
+
+                <h:form id="formcaptarboleta" class="contact-form" 
+                        style="margin-left: 0.9em; margin-right: 0.9em; padding-top: 2em;" 
+                        >
+                    <jmoordbjsf:ajaxstatus  />
+
+
+
+                    <!--???????????????????????????Menu???????????????????????????????????????????????????????-->
+
+                    <div class="row">
+                        <p:outputLabel 
+                            for="@next" value="tipo:  " />     
+                        <p:selectOneMenu >
+                            <f:selectItem itemValue="Tipo 1" itemLabel="#{msg['selectone.valor1']}"/>                 #                           
+                            <f:selectItem itemValue="Tipo 2" itemLabel="#{msg['selectone.valor2']}"/>                                            
+                            <f:selectItem itemValue="Tipo 3" itemLabel="#{msg['selectone.valor3']}"/>
+
+                        </p:selectOneMenu>
+                    </div>
+                    <!--???????????????????????????Fin Menu?????????????????????????????????????????????????-->
+                    <h:panelGroup id="formulario">
+
+                        <div class="row"/>
+
+
+                        <h:panelGroup >
+                            <br />
+
+                            <div class="row">
+                                <div class="input-field">
+                                    <p:inputText id="inputidpais" value="#{paisController.pais.idpais}"/>
+                                    <p:outputLabel for="@previous" value="#{msg['field.idpais']}"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field">
+                                    <p:inputText id="inputpais" value="#{paisController.pais.pais}"/>
+                                    <p:outputLabel for="@previous" value="#{msg['field.pais']}"/>
+                                </div>
+                            </div>
+
+
+                        </h:panelGroup>
+                       
+                      
+                        <div class="row">   
+                            
+                            <p:column>
+                                <p:commandButton value="#{app['button.save']}"
+                                                                                   
+                                                 icon="pi pi-search-plus"   
+                                                 action="#{paisController.save()}"
+                                                  update=":dialogx2"/>       
+                            </p:column>
+
+                        </div>
+                        <div class="row">   
+                            
+                            <p:column>
+                                <p:commandButton value="#{msg['field.dialogo']}"
+                                                 process="@this,:dialogx2"                                                 
+                                                 icon="pi pi-search-plus"   
+                                                 action="#{formularioController.clicBoton()}"
+                                                 oncomplete="PF('dialogouno').show();" update=":dialogx2"/>       
+                            </p:column>
+
+                        </div>
+
+                    </h:panelGroup>
+
+
+                </h:form>
+               
+                <h:panelGroup id="dialogx2">
+                    <p:dialog header="Boletas sin Aprobar" widgetVar="dialogouno" modal="true"                   
+                              id="dialogo"
+                              >
+                        <h:form id="formadialog">
+                            <p:outputLabel value="#{msg['field.bdialogo']}:" />                           
+
+                        </h:form>
+                    </p:dialog>   
+                </h:panelGroup>
+                
+
+            </div>
+            <!--end container-->
+
+        </section>
+        <!-- END CONTENT -->
+        <!-- ================================================================================================
+                                                      Scripts
+                      ===================================================================================================== -->
+        <jmoordbjsf:materialized-js />
+
+
+
+    </ui:define>
+
+</ui:composition>

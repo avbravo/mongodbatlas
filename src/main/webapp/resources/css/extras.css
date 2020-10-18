@@ -1,0 +1,37 @@
+.seleccionadoswitch{
+    font-weight: bold;
+    color: #186ba0;
+
+}
+.noseleccionadoswitch{
+
+}
+.calendariocolor{
+    color: initial;
+}
+.ui-datepicker td a.ui-state-default{
+    color: #00bcd4;
+}
+
+.p-datepicker.ui-calendar.calendario.ui-inputwrapper-filled,
+span.calendario>input.ui-inputfield.ui-widget.ui-state-default.ui-corner-all.ui-state-filled,
+.p-datepicker.ui-calendar.calendario{
+    color:#222;
+}
+
+.regresada{
+    background-color: #1abc9c !important;
+    background-image: none !important;
+    color: #000000 !important;
+}
+.historialheader{
+    font-weight: bold;
+    font-size: 1.5em !important;
+    background-image: none;
+    color: #880e4f;
+}
+.informacionpequena{
+    font-size: 0.85em !important;
+    background-image: none;
+    color: #880e4f !important;
+}
