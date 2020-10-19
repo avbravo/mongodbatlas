@@ -6,19 +6,27 @@
 package com.material.controllers;
 
 import com.avbravo.jmoordb.configuration.JmoordbConnection;
-import com.mongodb.MongoClientURI;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.inject.Named;
+import org.eclipse.microprofile.config.Config;
+import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
  *
  * @author IsraelHenry
  */
 @Named
-@SessionScoped
+@ApplicationScoped
 public class IndexController implements Serializable{
+@Inject
+    private Config config;
+
+@Inject
+    @ConfigProperty(name="mongodbsrv", defaultValue="")
+    private String mongodbsrv;
 
     
      @PostConstruct
@@ -27,8 +35,12 @@ public class IndexController implements Serializable{
 
         //Configuracion de la base de datos
         JmoordbConnection jmc = new JmoordbConnection.Builder()                
-                .withUri("mongodb+srv://avbravo:denver16@cluster0.myzbr.mongodb.net/test?retryWrites=true&w=majority")
+                .withUri(mongodbsrv)
                 .build();
+        
+//        JmoordbConnection jmc = new JmoordbConnection.Builder()                
+//                .withUri("mongodb+srv://avbravo:denver16@cluster0.myzbr.mongodb.net/test?retryWrites=true&w=majority")
+//                .build();
         
 
          System.out.println("invocando conexion");
