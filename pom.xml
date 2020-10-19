@@ -18,16 +18,16 @@
     </properties>
     
     <dependencies>
-<!--        <dependency>
+        <!--        <dependency>
             <groupId>org.glassfish</groupId>
             <artifactId>javax.faces</artifactId>
             <version>2.4.0</version>
         </dependency>-->
-<dependency>
-    <groupId>org.glassfish</groupId>
-    <artifactId>jakarta.faces</artifactId>
-    <version>2.3.12</version>
-</dependency>
+        <dependency>
+            <groupId>org.glassfish</groupId>
+            <artifactId>jakarta.faces</artifactId>
+            <version>2.3.12</version>
+        </dependency>
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
@@ -35,17 +35,48 @@
             <scope>provided</scope>
         </dependency>
         
-         <dependency>
+        <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces</artifactId>
             <version>8.0</version>
         </dependency>
         
+        
+        <!--
+                         Java 11
+        -->
+   
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-core</artifactId>
+            <version>2.3.0.1</version>
+        </dependency>
+        <dependency>
+            <groupId>javax.xml.bind</groupId>
+            <artifactId>jaxb-api</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sun.xml.bind</groupId>
+            <artifactId>jaxb-impl</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+        
+        <!--
+                swagger
+-->
+        <dependency>
+            <groupId>org.microprofile-ext.openapi-ext</groupId>
+            <artifactId>swagger-ui</artifactId>
+            <version>1.0.3</version>
+        </dependency>
+
+        
         <!--
                         jmoordb stack
         -->
         <dependency>
-         <groupId>com.github.avbravo</groupId>
+            <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb</artifactId>
             <version>0.73</version>
         </dependency>
@@ -59,13 +90,13 @@
         <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordbutils</artifactId>
-           <version>1.16</version>
+            <version>1.16</version>
         </dependency>
         
     </dependencies>
     
-     <build>
-         <finalName>mongodbatlas</finalName>
+    <build>
+        <finalName>mongodbatlas</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -133,7 +164,7 @@
         </plugins>
     </build>
     
-     <repositories>
+    <repositories>
         <repository>
             <id>jitpack.io</id>
             <url>https://jitpack.io</url>
