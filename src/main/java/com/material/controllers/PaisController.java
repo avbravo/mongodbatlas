@@ -9,6 +9,8 @@ import com.avbravo.jmoordbutils.JsfUtil;
 import com.material.entity.Pais;
 import com.material.repository.PaisRepository;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
@@ -23,7 +25,8 @@ public class PaisController implements Serializable {
     @Inject
     PaisRepository paisRepository;
     Pais pais = new Pais();
-
+ List<Pais> listPais = new ArrayList<Pais>();
+       
     public Pais getPais() {
         return pais;
     }
@@ -32,6 +35,26 @@ public class PaisController implements Serializable {
         this.pais = pais;
     }
 
+    public PaisRepository getPaisRepository() {
+        return paisRepository;
+    }
+
+    public void setPaisRepository(PaisRepository paisRepository) {
+        this.paisRepository = paisRepository;
+    }
+
+    public List<Pais> getListPais() {
+        listPais = paisRepository.findAll();
+        return listPais;
+    }
+
+    public void setListPais(List<Pais> listPais) {
+        this.listPais = listPais;
+    }
+
+    
+    
+    
     /**
      * Creates a new instance of PaisController
      */

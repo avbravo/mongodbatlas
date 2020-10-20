@@ -18,7 +18,7 @@
         <p:messages  closable="true" >
             <p:autoUpdate />
         </p:messages>
-        <p:growl  />
+        
 
         <!-- START CONTENT -->
         <section id="content">
@@ -28,25 +28,15 @@
                                               Despues del Tema  
                 *************************************************************************-->
 
-                <h:form id="formcaptarboleta" class="contact-form" 
+                <h:form id="form" class="contact-form" 
                         style="margin-left: 0.9em; margin-right: 0.9em; padding-top: 2em;" 
                         >
                     <jmoordbjsf:ajaxstatus  />
 
-
+<p:growl id="growl" />
 
                     <!--???????????????????????????Menu???????????????????????????????????????????????????????-->
 
-                    <div class="row">
-                        <p:outputLabel 
-                            for="@next" value="tipo:  " />     
-                        <p:selectOneMenu >
-                            <f:selectItem itemValue="Tipo 1" itemLabel="#{msg['selectone.valor1']}"/>                 #                           
-                            <f:selectItem itemValue="Tipo 2" itemLabel="#{msg['selectone.valor2']}"/>                                            
-                            <f:selectItem itemValue="Tipo 3" itemLabel="#{msg['selectone.valor3']}"/>
-
-                        </p:selectOneMenu>
-                    </div>
                     <!--???????????????????????????Fin Menu?????????????????????????????????????????????????-->
                     <h:panelGroup id="formulario">
 
@@ -71,47 +61,48 @@
 
 
                         </h:panelGroup>
-                       
-                      
+
+
                         <div class="row">   
-                            
+
                             <p:column>
                                 <p:commandButton value="#{app['button.save']}"
-                                                                                   
-                                                 icon="pi pi-search-plus"   
+
+                                                 icon="pi pi-save"   
                                                  action="#{paisController.save()}"
-                                                  update=":dialogx2"/>       
+                                                 update=":dialogx2,:form:datatable, :form:growl"/>       
                             </p:column>
-
+                         
                         </div>
-                        <div class="row">   
-                            
-                            <p:column>
-                                <p:commandButton value="#{msg['field.dialogo']}"
-                                                 process="@this,:dialogx2"                                                 
-                                                 icon="pi pi-search-plus"   
-                                                 action="#{formularioController.clicBoton()}"
-                                                 oncomplete="PF('dialogouno').show();" update=":dialogx2"/>       
-                            </p:column>
+                      
 
+                        <div>
+                            <p:dataTable var="item" value="#{paisController.listPais}"
+                                         id="datatable"
+
+                                         >
+                                <f:facet name="header">
+
+                                    <p:outputLabel value="#{msg['form.paises']}"/>
+
+                                </f:facet>
+
+                                <p:column headerText="#{msg['field.idpais']}" style="width:75px">
+                                    <p:outputLabel value="#{item.idpais}" />
+                                </p:column>
+                                <p:column headerText="#{msg['field.pais']}" style="width:75px">
+                                    <p:outputLabel value="#{item.pais}" />
+                                </p:column>
+                            </p:dataTable>
                         </div>
 
                     </h:panelGroup>
 
 
                 </h:form>
-               
-                <h:panelGroup id="dialogx2">
-                    <p:dialog header="Boletas sin Aprobar" widgetVar="dialogouno" modal="true"                   
-                              id="dialogo"
-                              >
-                        <h:form id="formadialog">
-                            <p:outputLabel value="#{msg['field.bdialogo']}:" />                           
 
-                        </h:form>
-                    </p:dialog>   
-                </h:panelGroup>
-                
+              
+
 
             </div>
             <!--end container-->
