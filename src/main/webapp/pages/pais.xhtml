@@ -18,7 +18,7 @@
         <p:messages  closable="true" >
             <p:autoUpdate />
         </p:messages>
-        
+
 
         <!-- START CONTENT -->
         <section id="content">
@@ -33,7 +33,7 @@
                         >
                     <jmoordbjsf:ajaxstatus  />
 
-<p:growl id="growl" />
+                    <p:growl id="growl" />
 
                     <!--???????????????????????????Menu???????????????????????????????????????????????????????-->
 
@@ -72,9 +72,9 @@
                                                  action="#{paisController.save()}"
                                                  update=":form:datatable, :form:growl"/>       
                             </p:column>
-                         
+
                         </div>
-                      
+
 
                         <div>
                             <p:dataTable var="item" value="#{paisController.listPais}"
@@ -101,7 +101,7 @@
 
                 </h:form>
 
-              
+
 
 
             </div>

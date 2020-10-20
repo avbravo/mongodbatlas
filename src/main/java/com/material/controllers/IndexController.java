@@ -16,7 +16,7 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 
 /**
  *
- * @author IsraelHenry
+ * @author  
  */
 @Named
 @ApplicationScoped
