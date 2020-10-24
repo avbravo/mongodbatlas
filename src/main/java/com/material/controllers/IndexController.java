@@ -44,9 +44,7 @@ public class IndexController implements Serializable{
                 .withUri(mongodbsrv)                
                 .build();
         
-//        JmoordbConnection jmc = new JmoordbConnection.Builder()                
-//                .withUri("mongodb+srv://avbravo:denver16@cluster0.myzbr.mongodb.net/test?retryWrites=true&w=majority")
-//                .build();
+
         
     JmoordbConfiguration jc = new JmoordbConfiguration.Builder()
                     .withSpanish(true)
@@ -56,9 +54,6 @@ public class IndexController implements Serializable{
                     .withUsername("demo")
                     .build();
 
-//            JmoordbContext.put("jmoordb_user", usuario);
-//            JmoordbContext.put("jmoordb_rol", rol);
-         System.out.println("invocando conexion");
     }
     
     public String go(String pathPage) {

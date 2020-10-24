@@ -92,3 +92,61 @@ cd webmongo
 
 mvn archetype:generate -Dfilter=mongodbatlas-archetype   -DarchetypeVersion=0.1 -DartifactId=nombre-proyecto -Dversion=1.0-SNAPSHOT -DarchetypeGroupId=com.avbravo  -DgroupId=com.avbravo
 
+
+#----
+Before
+#-*------------------------
+// <editor-fold defaultstate="collapsed" desc="Boolean beforeSave()">
+    public Boolean beforeSave() {
+        try {
+            //password nuevo no coincide
+            if (!usuario.getPassword().equals(passwordnewrepeat)) {
+                JsfUtil.warningMessage(rf.getMessage("warning.passwordnocoinciden"));
+                return false;
+            }
+            
+            usuario.setRol(rolList);
+            usuario.setPassword(JsfUtil.encriptar(usuario.getPassword()));
+            return true;
+        } catch (Exception e) {
+            errorServices.errorMessage(nameOfClass(), nameOfMethod(), e.getLocalizedMessage(), e);
+        }
+        return false;
+    }
+
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Boolean beforeEdit()">
+    public Boolean beforeEdit() {
+        try {
+            usuario.setRol(rolList);
+            usuario.setPassword(JsfUtil.encriptar(usuario.getPassword()));
+            return true;
+        } catch (Exception e) {
+            errorServices.errorMessage(nameOfClass(), nameOfMethod(), e.getLocalizedMessage(), e);
+        }
+        return false;
+    }
+
+    // </editor-fold>
+    // <editor-fold defaultstate="collapsed" desc="Boolean beforeDelete()">
+    @Override
+    public Boolean beforeDelete() {
+        Boolean delete = usuarioServices.isDeleted(usuario);
+        if (!delete) {
+            JsfUtil.warningDialog(rf.getMessage("warning.advertencia"), rf.getMessage("warning.nosepuedeeliminar"));
+        }
+        return delete;
+    }
+
+    // </editor-fold>     
+    // <editor-fold defaultstate="collapsed" desc="Boolean beforeDeleteFromListXhtml()">
+    @Override
+    public Boolean beforeDeleteFromListXhtml() {
+        Boolean delete = usuarioServices.isDeleted(usuario);
+        if (!delete) {
+            JsfUtil.warningDialog(rf.getMessage("warning.advertencia"), rf.getMessage("warning.nosepuedeeliminar"));
+        }
+        return delete;
+    }
+
+    // </editor-fold>
