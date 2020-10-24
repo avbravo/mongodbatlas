@@ -31,13 +31,59 @@ public class PaisPageController implements Serializable ,IController{
     @Inject
     PaisRepository paisRepository;
     Pais pais = new Pais();
+    Pais paisSelected = new Pais();
+    Pais paisSearch = new Pais();
     List<Pais> listPais = new ArrayList<Pais>();
     
-    
+    private static final long serialVersionUID = 1L;
+
+    private Boolean writable = false;
     
 
     @Inject
     PaisServices paisServices;
+
+    public Pais getPaisSearch() {
+        return paisSearch;
+    }
+
+    public void setPaisSearch(Pais paisSearch) {
+        this.paisSearch = paisSearch;
+    }
+
+    
+    
+    
+    public Pais getPaisSelected() {
+        return paisSelected;
+    }
+
+    public void setPaisSelected(Pais paisSelected) {
+        this.paisSelected = paisSelected;
+    }
+
+    
+    
+    
+    
+    public Boolean getWritable() {
+        return writable;
+    }
+
+    public void setWritable(Boolean writable) {
+        this.writable = writable;
+    }
+
+    public PaisServices getPaisServices() {
+        return paisServices;
+    }
+
+    public void setPaisServices(PaisServices paisServices) {
+        this.paisServices = paisServices;
+    }
+    
+    
+    
 
     public Pais getPais() {
         return pais;

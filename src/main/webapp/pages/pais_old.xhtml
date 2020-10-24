@@ -37,16 +37,7 @@
 
                     <h:panelGroup id="content">
 
-                        <div class="row">
-                             <p:column>
-                                <p:commandButton title="#{app['button.new']}" 
-                                                 process="@this,:form:panelGroupNew"                                                 
-                                             icon="fa fa-file-o" 
-
-                                                 action="#{paisPageController.prepareNew()}"
-                                                 oncomplete="PF('dialogNew').show();" update=":form:panelGroupNew"/>       
-                            </p:column>
-                        </div>
+                        <div class="row"/>
 
 
                         <h:panelGroup >
@@ -104,46 +95,6 @@
 
                     </h:panelGroup>
 
-                    
-                    
-                       <h:panelGroup id="panelGroupNew">
-                        <p:dialog header="Pais" widgetVar="dialogNew" modal="true"                   
-                                  id="dialogonuevo"  dynamic="true"
-                                  >
-                            <h:form id="formadialog">
-                                <div class="row">
-                                    <p:outputLabel  value="#{msg['field.idpais']}" />
-                                    <p:inputText value="#{paisPageController.pais.idpais}" id="idpais"  label="#{msg['field.pais']}" />
-
-                                </div>
-                                <div class="row">
-                                    <p:outputLabel  value="#{msg['field.pais']}" />
-                                    <p:inputText value="#{paisPageController.pais.pais}" id="pais"  label="#{msg['field.pais']}" />
-
-                                </div>
-
-
-                                <div class="row">
-                                    <p:commandButton rendered="true"                          
-                                                     value="#{app['button.save']}"
-                                                     icon="fa fa-floppy-o"
-                                                     title="#{app['button.save']}"
-                                                     action="#{paisPageController.save()}"
-                                                     process=":form:panelGroupNew"
-                                                     oncomplete="PF('dialogNew').hide()" 
-                                                     update=":form:datatable, :form:growl"> 
-                                                       
-
-                                    </p:commandButton>
-
-
-
-                                </div>
-
-
-                            </h:form>
-                        </p:dialog>   
-                    </h:panelGroup>
 
                 </h:form>
 
