@@ -36,22 +36,22 @@
                         <jmoordbjsf:messages id="msg"/>
                         <extension:toolbarnew_extension label="#{msg['field.idpais']}"
                                                title="#{msg['titleview.pais']}"
-                                               value="#{paisController1.pais.idpais}"
-                                               disabled="#{paisController1.writable}"
+                                               value="#{paisController.pais.idpais}"
+                                               disabled="#{paisController.writable}"
                                                rendererList="true"
-                                               controller="#{paisController1}"                                       
+                                               controller="#{paisController}"                                       
                                                url  = "/pages/pais/list.xhtml"
 
                                                />
 
-                        <h:panelGroup collapsible="false" title="#{app['title.data']}" look="primary"  rendered="#{paisController1.writable}">
+                        <h:panelGroup collapsible="false" title="#{app['title.data']}" look="primary"  rendered="#{paisController.writable}">
 
                             <b:panelGrid id="panel" colSpans="2,10" size="xs" > 
 
 
 
                                 <p:outputLabel  value="#{msg['field.pais']}" />
-                                <jmoordbjsf:inputText value="#{paisController1.pais.pais}" id="pais"  label="#{msg['field.pais']}" />
+                                <jmoordbjsf:inputText value="#{paisController.pais.pais}" id="pais"  label="#{msg['field.pais']}" />
 
 
                                 <p:commandButton rendered="true"                          
@@ -59,7 +59,7 @@
                                                  icon="fa fa-floppy-o"
                                                  title="#{app['button.save']}"
 
-                                                 action="#{paisController1.save()}"
+                                                 action="#{paisController.save()}"
                                                  update=":form:content" > 
 
 

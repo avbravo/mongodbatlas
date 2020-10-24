@@ -32,13 +32,13 @@
 
                 <jmoordbjsf:messages id="msg"/>
                 <b:panel collapsible="false" title="#{msg['titleview.pais']}"  look="primary">
-                    <b:panelGrid id="panel" colSpans="2,10" size="xs" rendered="#{paisController1.writable}"> 
+                    <b:panelGrid id="panel" colSpans="2,10" size="xs" rendered="#{paisController.writable}"> 
 
                         <p:outputLabel  value="#{msg['field.idpais']}" />
-                        <p:outputLabel value="#{paisController1.pais.idpais}" id="idpais"  />
+                        <p:outputLabel value="#{paisController.pais.idpais}" id="idpais"  />
 
                         <p:outputLabel  value="#{msg['field.pais']}" />
-                        <jmoordbjsf:inputText value="#{paisController1.pais.pais}" id="pais"  />
+                        <jmoordbjsf:inputText value="#{paisController.pais.pais}" id="pais"  />
 
                      
 
@@ -47,7 +47,7 @@
                         renderedDelete="true"
                         renderedEdit="true"
                         renderedList="true"                    
-                        controller="#{paisController1}"                       
+                        controller="#{paisController}"                       
                         url  = "/pages/pais/list.xhtml"
                         />
                 </b:panel>

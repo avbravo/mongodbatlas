@@ -35,10 +35,7 @@
 
                     <p:growl id="growl" />
 
-                    <!--???????????????????????????Menu???????????????????????????????????????????????????????-->
-
-                    <!--???????????????????????????Fin Menu?????????????????????????????????????????????????-->
-                    <h:panelGroup id="formulario">
+                    <h:panelGroup id="content">
 
                         <div class="row"/>
 
@@ -48,13 +45,13 @@
 
                             <div class="row">
                                 <div class="input-field">
-                                    <p:inputText id="inputidpais" value="#{paisController.pais.idpais}"/>
+                                    <p:inputText id="inputidpais" value="#{paisPageController.pais.idpais}"/>
                                     <p:outputLabel for="@previous" value="#{msg['field.idpais']}"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field">
-                                    <p:inputText id="inputpais" value="#{paisController.pais.pais}"/>
+                                    <p:inputText id="inputpais" value="#{paisPageController.pais.pais}"/>
                                     <p:outputLabel for="@previous" value="#{msg['field.pais']}"/>
                                 </div>
                             </div>
@@ -69,7 +66,7 @@
                                 <p:commandButton value="#{app['button.save']}"
 
                                                  icon="pi pi-save"   
-                                                 action="#{paisController.save()}"
+                                                 action="#{paisPageController.save()}"
                                                  update=":form:datatable, :form:growl"/>       
                             </p:column>
 
@@ -77,7 +74,7 @@
 
 
                         <div>
-                            <p:dataTable var="item" value="#{paisController.listPais}"
+                            <p:dataTable var="item" value="#{paisPageController.listPais}"
                                          id="datatable"
 
                                          >

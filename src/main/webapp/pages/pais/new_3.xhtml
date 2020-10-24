@@ -34,24 +34,24 @@
                 <jmoordbjsf:messages id="msg"/>
                 <jmoordbjsf:toolbarnew label="#{msg['field.idpais']}"
                                        title="#{msg['titleview.pais']}"
-                                       value="#{paisController1.pais.idpais}"
-                                       disabled="#{paisController1.writable}"
+                                       value="#{paisController.pais.idpais}"
+                                       disabled="#{paisController.writable}"
                                        rendererList="true"
-                                       contpaisler="#{paisController1}"                                       
+                                       contpaisler="#{paisController}"                                       
                                        url  = "/pages/pais/list.xhtml"
 
                                        />
-                <b:panel collapsible="false" title="#{app['title.data']}" look="primary" rendered="#{paisController1.writable}">
+                <b:panel collapsible="false" title="#{app['title.data']}" look="primary" rendered="#{paisController.writable}">
 
-                    <b:panelGrid id="panel" colSpans="2,10" size="xs" rendered="#{paisController1.writable}"> 
+                    <b:panelGrid id="panel" colSpans="2,10" size="xs" rendered="#{paisController.writable}"> 
 
                         <p:outputLabel  value="#{msg['field.pais']}" />
-                        <jmoordbjsf:inputText value="#{paisController1.pais.pais}" id="pais"  label="#{msg['field.pais']}" />
+                        <jmoordbjsf:inputText value="#{paisController.pais.pais}" id="pais"  label="#{msg['field.pais']}" />
 
                     
                         <jmoordbjsf:toolbarsave
                             rendered="true"
-                            contpaisler="#{paisController1}"   />
+                            contpaisler="#{paisController}"   />
 
                     </b:panelGrid>                    
                 </b:panel>

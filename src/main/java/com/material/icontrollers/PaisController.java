@@ -32,7 +32,7 @@ import org.bson.Document;
 @ViewScoped
 @Getter
 @Setter
-public class PaisController1 implements Serializable , IController {
+public class PaisController implements Serializable , IController { 
  private static final long serialVersionUID = 1L;
 
     private Boolean writable = false;
@@ -66,7 +66,7 @@ public class PaisController1 implements Serializable , IController {
     /**
      * Creates a new instance of PaisController
      */
-    public PaisController1() {
+    public PaisController() {
     }
     
     // <editor-fold defaultstate="collapsed" desc="init">

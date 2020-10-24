@@ -49,13 +49,13 @@
 
                             <div class="row">
                                 <div class="input-field">
-                                    <p:inputText id="inputidpais" value="#{paisController1.pais.idpais}"/>
+                                    <p:inputText id="inputidpais" value="#{paisController.pais.idpais}"/>
                                     <p:outputLabel for="@previous" value="#{msg['field.idpais']}"/>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="input-field">
-                                    <p:inputText id="inputpais" value="#{paisController1.pais.pais}"/>
+                                    <p:inputText id="inputpais" value="#{paisController.pais.pais}"/>
                                     <p:outputLabel for="@previous" value="#{msg['field.pais']}"/>
                                 </div>
                             </div>
@@ -77,10 +77,10 @@
 
 
 
-                                <p:dataTable var="item" value="#{paisController1.paisDataModel}"
+                                <p:dataTable var="item" value="#{paisController.paisDataModel}"
 
                                              paginator="false"
-                                             selection="#{paisController1.paisListSelected}"
+                                             selection="#{paisController.paisListSelected}"
                                              rowKey="#{item.idpais}" 
                                              style="margin-bottom:0"
                                              id="dataTable2"
@@ -88,10 +88,10 @@
                                              >
                                     <f:facet name="header">
                                         <jmoordbjsf:paginator 
-                                            controller="#{paisController1}"                        
-                                            rowPage="#{paisController1.rowPage}"                   
-                                            page="#{paisController1.page}"
-                                            pages="#{paisController1.pages}"
+                                            controller="#{paisController}"                        
+                                            rowPage="#{paisController.rowPage}"                   
+                                            page="#{paisController.page}"
+                                            pages="#{paisController.pages}"
                                             skip="ajax:paisController1.skip()" 
                                             url = "/pages/pais/new.xhtml"
                                             />
@@ -112,7 +112,7 @@
 
                                             renderedEdit="true"
                                             renderedDelete="true"
-                                            controller="#{paisController1}"
+                                            controller="#{paisController}"
                                             url="/pages/pais/view.xhtml"
                                             item="#{item}"
 
@@ -129,7 +129,7 @@
                               width="650" height="350">
 
                         <p:outputPanel id="deleteListDetail" style="text-align:center;">
-                            <p:dataList value="#{paisController1.paisListSelected}" var="item" type="definition" >
+                            <p:dataList value="#{paisController.paisListSelected}" var="item" type="definition" >
                                 <f:facet name="header">
                                     <p:outputLabel value="#{app['dialogdelete.datafordelete']}"/>
                                 </f:facet>
@@ -141,7 +141,7 @@
                                                      update=":form:dataTable"
                                                      onclick="PF('deleteListDialog').hide();"/>
 
-                                    <b:commandButton value="DELETE FROM LISTXHTML" look="danger" action="#{paisController1.deleteFromListxhtml()}"
+                                    <b:commandButton value="DELETE FROM LISTXHTML" look="danger" action="#{paisController.deleteFromListxhtml()}"
                                                      update=":form:dataTable"
                                                      onclick="PF('deleteListDialog').hide();"/>
                                 </f:facet> 

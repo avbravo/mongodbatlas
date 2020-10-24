@@ -39,11 +39,11 @@
 
                     <p:outputLabel value="#{msg['field.idrol']}"/>
                     <jmoordbjsf:autocomplete converter="#{paisConverter}"
-                                             completeMethod="#{paisController1.paisServices.complete}"
+                                             completeMethod="#{paisController.paisServices.complete}"
                                              labeltip1="#{msg['field.idrol']} #{p.idrol}"
                                              labeltip2="#{msg['field.rol']} #{p.rol}"
-                                             listener="#{paisController1.handleAutocompleteOfListXhtml}"
-                                             value="#{paisController1.paisSearch}"
+                                             listener="#{paisController.handleAutocompleteOfListXhtml}"
+                                             value="#{paisController.paisSearch}"
                                              itemLabel="#{p.idpais}"
                                              field="idpais"
                                              dropdown="true"
@@ -52,11 +52,11 @@
 
                     <p:outputLabel value="#{msg['field.pais']}"/>
                     <jmoordbjsf:autocomplete converter="#{paisConverter}"
-                                             completeMethod="#{paisController1.paisServices.complete}"
+                                             completeMethod="#{paisController.paisServices.complete}"
                                              labeltip1="#{msg['field.idpais']} #{p.idpais}"
                                              labeltip2="#{msg['field.pais']} #{p.pais}" 
                                              listener="#{paisontroller.handleAutocompleteOfListXhtml}"
-                                             value="#{paisController1.paisSearch}"
+                                             value="#{paisController.paisSearch}"
                                              itemLabel=" #{p.pais}"
                                              field="pais"
                                              dropdown="true"
@@ -70,18 +70,18 @@
             <b:panel title="#{msg['titlelist.rol']}" collapsible="false" id="dataTable" look="primary">
 
                 <jmoordbjsf:paginator
-                    controller="#{paisController1}"                        
-                    rowPage="#{paisController1.rowPage}"                   
-                    page="#{paisController1.page}"
-                    pages="#{paisController1.pages}"
+                    controller="#{paisController}"                        
+                    rowPage="#{paisController.rowPage}"                   
+                    page="#{paisController.page}"
+                    pages="#{paisController.pages}"
                     skip="ajax:paisController1.skip()" 
                     url = "/pages/rol/new.xhtml"
                     />
-                <p:dataTable value="#{paisController1.paisDataModel}"
+                <p:dataTable value="#{paisController.paisDataModel}"
                              var="item"
                              id="dataTable2"
                              paginator="false"
-                             selection="#{paisController1.paisListSelected}"
+                             selection="#{paisController.paisListSelected}"
                              rowKey="#{item.idpais}" 
                              style="margin-bottom:0"
                              reflow="true">
@@ -100,7 +100,7 @@
 
                             renderedEdit="true"
                             renderedDelete="true"
-                            controller="#{paisController1}"
+                            controller="#{paisController}"
                             url="/pages/pais/view.xhtml"
                             item="#{item}"
 
@@ -115,7 +115,7 @@
                       width="650" height="350">
 
                 <p:outputPanel id="deleteListDetail" style="text-align:center;">
-                    <p:dataList value="#{paisController1.paislListSelected}" var="item" type="definition" >
+                    <p:dataList value="#{paisController.paislListSelected}" var="item" type="definition" >
                         <f:facet name="header">
                             <p:outputLabel value="#{app['dialogdelete.datafordelete']}"/>
                         </f:facet>
@@ -127,7 +127,7 @@
                                              update=":form:dataTable"
                                              onclick="PF('deleteListDialog').hide();"/>
 
-                            <b:commandButton value="DELETE FROM LISTXHTML" look="danger" action="#{paisController1.deleteFromListxhtml()}"
+                            <b:commandButton value="DELETE FROM LISTXHTML" look="danger" action="#{paisController.deleteFromListxhtml()}"
                                              update=":form:dataTable"
                                              onclick="PF('deleteListDialog').hide();"/>
                         </f:facet> 
