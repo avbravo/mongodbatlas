@@ -103,7 +103,6 @@
 
                             </p:dataTable>
                         </div>
-                  
                         <div class="row">
                             <div class="col s2">
 
@@ -111,8 +110,8 @@
                                                          completeMethod="#{paisPageController.paisServices.complete}"
                                                          labeltip1="#{msg['field.idpais']} #{p.idpais}" 
                                                          labeltip2="#{msg['field.pais']} #{p.pais}" 
-                                                         listener="#{paisPageController.handleAutocompleteOfListXhtml}"
-                                                         value="#{paisPageController.paisSearch}"
+                                                         listener="#{paisP>geController.handleAutocompleteOfListXhtml}"
+                                                         value="#{paisController.paisSearch}"
                                                          itemLabel=" #{p.idpais} -#{p.pais}"
                                                          field="idpais"
                                                          dropdown="true"

@@ -86,7 +86,7 @@
         <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb</artifactId>
-            <version>0.74</version>
+            <version>1.0</version>
         </dependency>
     
        

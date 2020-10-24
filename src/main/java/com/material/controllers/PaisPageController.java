@@ -7,7 +7,6 @@ package com.material.controllers;
 
 import com.avbravo.jmoordb.configuration.JmoordbControllerEnvironment;
 import com.avbravo.jmoordb.interfaces.IController;
-import com.avbravo.jmoordbutils.JsfUtil;
 import com.material.entity.Pais;
 import com.material.repository.PaisRepository;
 import com.material.services.PaisServices;
@@ -30,128 +29,43 @@ import lombok.Setter;
 @ViewScoped
 @Getter
 @Setter
-public class PaisPageController implements Serializable ,IController{
+public class PaisPageController implements Serializable, IController {
+    // <editor-fold defaultstate="collapsed" desc="fields()">
+       private static final long serialVersionUID = 1L;
+       //paginacion
+           Integer page = 1;
+    Integer rowPage = 25;
+    List<Integer> pages = new ArrayList<>();
 
-    @Inject
-    PaisRepository paisRepository;
     Pais pais = new Pais();
     Pais paisSelected = new Pais();
     Pais paisSearch = new Pais();
     List<Pais> paisList = new ArrayList<Pais>();
-     Integer page = 1;
-    Integer rowPage = 25;
-    List<Integer> pages = new ArrayList<>();
 
-    public Integer getPage() {
-        return page;
-    }
-
-    public void setPage(Integer page) {
-        this.page = page;
-    }
-
-    public Integer getRowPage() {
-        return rowPage;
-    }
-
-    public void setRowPage(Integer rowPage) {
-        this.rowPage = rowPage;
-    }
-
-    public List<Integer> getPages() {
-        return pages;
-    }
-
-    public void setPages(List<Integer> pages) {
-        this.pages = pages;
-    }
-    private static final long serialVersionUID = 1L;
 
     private Boolean writable = false;
-    
 
     @Inject
     PaisServices paisServices;
 
+   @Inject
+    PaisRepository paisRepository;
     
+    // </editor-fold>
     
-    
-    
-    public Pais getPaisSearch() {
-        return paisSearch;
-    }
-
-    public void setPaisSearch(Pais paisSearch) {
-        this.paisSearch = paisSearch;
-    }
-
-    
-    
-    
-    public Pais getPaisSelected() {
-        return paisSelected;
-    }
-
-    public void setPaisSelected(Pais paisSelected) {
-        this.paisSelected = paisSelected;
-    }
-
-    
-    
-    
-    
-    public Boolean getWritable() {
-        return writable;
-    }
-
-    public void setWritable(Boolean writable) {
-        this.writable = writable;
-    }
-
-    public PaisServices getPaisServices() {
-        return paisServices;
-    }
-
-    public void setPaisServices(PaisServices paisServices) {
-        this.paisServices = paisServices;
-    }
-    
-    
-    
-
-    public Pais getPais() {
-        return pais;
-    }
-
-    public void setPais(Pais pais) {
-        this.pais = pais;
-    }
-
-    public PaisRepository getPaisRepository() {
-        return paisRepository;
-    }
-
-    public void setPaisRepository(PaisRepository paisRepository) {
-        this.paisRepository = paisRepository;
-    }
-
-    public List<Pais> getPaisList() {
+        // <editor-fold defaultstate="collapsed" desc="set/get()">
+      public List<Pais> getPaisList() {
         paisList = paisRepository.findAll();
         return paisList;
     }
 
-    public void setPaisList(List<Pais> paisList) {
-        this.paisList = paisList;
-    }
-
-    
+        // </editor-fold>
 
     /**
      * Creates a new instance of PaisController
      */
     public PaisPageController() {
     }
-
 
     @PostConstruct
     public void init() {
@@ -161,9 +75,8 @@ public class PaisPageController implements Serializable ,IController{
             configurar el ambiente del controller
              */
             HashMap parameters = new HashMap();
-     
-            //    parameters.put("P_EMPRESA", jmoordb_user.getEmpresa().getDescripcion());
 
+            //    parameters.put("P_EMPRESA", jmoordb_user.getEmpresa().getDescripcion());
             JmoordbControllerEnvironment jmc = new JmoordbControllerEnvironment.Builder()
                     .withController(this)
                     .withRepository(paisRepository)
@@ -176,18 +89,16 @@ public class PaisPageController implements Serializable ,IController{
                     .withPathReportDetail("/resources/reportes/pais/details.jasper")
                     .withPathReportAll("/resources/reportes/pais/all.jasper")
                     .withparameters(parameters)
-                     .withResetInSave(true)
-                   .withAction("golist")
+                    .withResetInSave(true)
+                    .withAction("golist")
                     .build();
 
             start();
 
         } catch (Exception e) {
-          
+
         }
     }// </editor-fold>
-    @Override
-    public void move(Integer page) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+
+    
 }
