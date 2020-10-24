@@ -19,6 +19,8 @@ import javax.annotation.PostConstruct;
 import javax.inject.Named;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -26,6 +28,8 @@ import javax.inject.Inject;
  */
 @Named
 @ViewScoped
+@Getter
+@Setter
 public class PaisPageController implements Serializable ,IController{
 
     @Inject
@@ -33,8 +37,34 @@ public class PaisPageController implements Serializable ,IController{
     Pais pais = new Pais();
     Pais paisSelected = new Pais();
     Pais paisSearch = new Pais();
-    List<Pais> listPais = new ArrayList<Pais>();
-    
+    List<Pais> paisList = new ArrayList<Pais>();
+     Integer page = 1;
+    Integer rowPage = 25;
+    List<Integer> pages = new ArrayList<>();
+
+    public Integer getPage() {
+        return page;
+    }
+
+    public void setPage(Integer page) {
+        this.page = page;
+    }
+
+    public Integer getRowPage() {
+        return rowPage;
+    }
+
+    public void setRowPage(Integer rowPage) {
+        this.rowPage = rowPage;
+    }
+
+    public List<Integer> getPages() {
+        return pages;
+    }
+
+    public void setPages(List<Integer> pages) {
+        this.pages = pages;
+    }
     private static final long serialVersionUID = 1L;
 
     private Boolean writable = false;
@@ -43,6 +73,10 @@ public class PaisPageController implements Serializable ,IController{
     @Inject
     PaisServices paisServices;
 
+    
+    
+    
+    
     public Pais getPaisSearch() {
         return paisSearch;
     }
@@ -101,14 +135,16 @@ public class PaisPageController implements Serializable ,IController{
         this.paisRepository = paisRepository;
     }
 
-    public List<Pais> getListPais() {
-        listPais = paisRepository.findAll();
-        return listPais;
+    public List<Pais> getPaisList() {
+        paisList = paisRepository.findAll();
+        return paisList;
     }
 
-    public void setListPais(List<Pais> listPais) {
-        this.listPais = listPais;
+    public void setPaisList(List<Pais> paisList) {
+        this.paisList = paisList;
     }
+
+    
 
     /**
      * Creates a new instance of PaisController

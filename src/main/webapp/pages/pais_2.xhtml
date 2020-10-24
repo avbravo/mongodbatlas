@@ -58,7 +58,7 @@
                             <p:dataTable var="item" value="#{paisPageController.paisList}"
                                          id="datatable"
                                          paginator="true"
-                                         rows="10"
+                                   
                                          rowKey="#{item.idpais}" 
                                          style="margin-bottom:0"
 
@@ -83,11 +83,11 @@
                                         icon="fa fa-edit" 
                                         title="#{app['button.edit']}"  
 
-                              
+                                      action= "#{paisPageController.prepareViewDialog}" 
                                         oncomplete="PF('dialogView').show();" 
                                         update=":form:panelGroupView"
                                         > 
-                                                 <f:setPropertyActionListener value="#{item}" target="#{paisPageController.pais}" />
+                                                 <f:setPropertyActionListener value="#{item}" target="#{paisPageController.paisSelected}" />
                                      
                                     </p:commandButton>
                                 </p:column>
@@ -152,12 +152,12 @@
                             <h:form id="formview">
                                 <div class="row">
                                     <p:outputLabel  value="#{msg['field.idpais']}" />
-                                 <p:outputLabel value="#{paisPageController.pais.idpais}"  " />
+                                    <p:inputText value="#{paisPageController.paisSelected.idpais}"  label="#{msg['field.pais']}" />
 
                                 </div>
                                 <div class="row">
                                     <p:outputLabel  value="#{msg['field.pais']}" />
-                                    <p:inputText value="#{paisPageController.pais.pais}"   label="#{msg['field.pais']}" />
+                                    <p:inputText value="#{paisPageController.paisSelected.pais}"   label="#{msg['field.pais']}" />
 
                                 </div>
 
@@ -175,9 +175,9 @@
 
                                     </p:commandButton>
                                     <p:commandButton rendered="true"                          
-                                                     icon="fa fa-trash" 
-                                                     title="#{app['button.delete']}"  
-                                                     value="#{app['button.delete']}" 
+                                                     icon="fa fa-edit" 
+                                                     title="#{app['button.edit']}"  
+                                                     value="#{app['button.edit']}" 
                                                      action="#{paisPageController.delete()}"
                                                      process=":form:panelGroupView"
                                                      oncomplete="PF('dialogView').hide()" 

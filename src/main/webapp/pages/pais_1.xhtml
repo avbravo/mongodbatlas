@@ -38,10 +38,10 @@
                     <h:panelGroup id="content">
 
                         <div class="row">
-                            <p:column>
+                             <p:column>
                                 <p:commandButton title="#{app['button.new']}" 
                                                  process="@this,:form:panelGroupNew"                                                 
-                                                 icon="fa fa-file-o" 
+                                             icon="fa fa-file-o" 
 
                                                  action="#{paisPageController.prepareNew()}"
                                                  oncomplete="PF('dialogNew').show();" update=":form:panelGroupNew"/>       
@@ -49,18 +49,42 @@
                         </div>
 
 
+                        <h:panelGroup >
+                            <br />
+
+                            <div class="row">
+                                <div class="input-field">
+                                    <p:inputText id="inputidpais" value="#{paisPageController.pais.idpais}"/>
+                                    <p:outputLabel for="@previous" value="#{msg['field.idpais']}"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="input-field">
+                                    <p:inputText id="inputpais" value="#{paisPageController.pais.pais}"/>
+                                    <p:outputLabel for="@previous" value="#{msg['field.pais']}"/>
+                                </div>
+                            </div>
 
 
+                        </h:panelGroup>
 
+
+                        <div class="row">   
+
+                            <p:column>
+                                <p:commandButton value="#{app['button.save']}"
+
+                                                 icon="pi pi-save"   
+                                                 action="#{paisPageController.save()}"
+                                                 update=":form:datatable, :form:growl"/>       
+                            </p:column>
+
+                        </div>
 
 
                         <div>
-                            <p:dataTable var="item" value="#{paisPageController.paisList}"
+                            <p:dataTable var="item" value="#{paisPageController.listPais}"
                                          id="datatable"
-                                         paginator="true"
-                                         rows="10"
-                                         rowKey="#{item.idpais}" 
-                                         style="margin-bottom:0"
 
                                          >
                                 <f:facet name="header">
@@ -75,33 +99,14 @@
                                 <p:column headerText="#{msg['field.pais']}" style="width:75px">
                                     <p:outputLabel value="#{item.pais}" />
                                 </p:column>
-
-                                <p:column headerText="" style="width:80px">
-
-                                    <p:commandButton 
-
-                                        icon="fa fa-edit" 
-                                        title="#{app['button.edit']}"  
-
-                              
-                                        oncomplete="PF('dialogView').show();" 
-                                        update=":form:panelGroupView"
-                                        > 
-                                                 <f:setPropertyActionListener value="#{item}" target="#{paisPageController.pais}" />
-                                     
-                                    </p:commandButton>
-                                </p:column>
-                                
-                               
-                               
                             </p:dataTable>
                         </div>
 
                     </h:panelGroup>
 
-
-
-                    <h:panelGroup id="panelGroupNew">
+                    
+                    
+                       <h:panelGroup id="panelGroupNew">
                         <p:dialog header="Pais" widgetVar="dialogNew" modal="true"                   
                                   id="dialogonuevo"  dynamic="true"
                                   >
@@ -127,62 +132,7 @@
                                                      process=":form:panelGroupNew"
                                                      oncomplete="PF('dialogNew').hide()" 
                                                      update=":form:datatable, :form:growl"> 
-
-
-                                    </p:commandButton>
-
-
-
-                                </div>
-
-
-                            </h:form>
-                        </p:dialog>   
-
-
-
-
-
-
-                    </h:panelGroup>
-                    <h:panelGroup id="panelGroupView">
-                        <p:dialog header="Editar" widgetVar="dialogView" modal="true"                   
-                                  id="dialogoview"  dynamic="true" 
-                                  >
-                            <h:form id="formview">
-                                <div class="row">
-                                    <p:outputLabel  value="#{msg['field.idpais']}" />
-                                 <p:outputLabel value="#{paisPageController.pais.idpais}"  " />
-
-                                </div>
-                                <div class="row">
-                                    <p:outputLabel  value="#{msg['field.pais']}" />
-                                    <p:inputText value="#{paisPageController.pais.pais}"   label="#{msg['field.pais']}" />
-
-                                </div>
-
-
-                                <div class="row">
-                                    <p:commandButton rendered="true"                          
-                                                     icon="fa fa-edit" 
-                                                     title="#{app['button.edit']}"  
-                                                     value="#{app['button.edit']}" 
-                                                     action="#{paisPageController.edit()}"
-                                                     process=":form:panelGroupView"
-                                                     oncomplete="PF('dialogView').hide()" 
-                                                     update=":form:datatable, :form:growl"> 
-
-
-                                    </p:commandButton>
-                                    <p:commandButton rendered="true"                          
-                                                     icon="fa fa-trash" 
-                                                     title="#{app['button.delete']}"  
-                                                     value="#{app['button.delete']}" 
-                                                     action="#{paisPageController.delete()}"
-                                                     process=":form:panelGroupView"
-                                                     oncomplete="PF('dialogView').hide()" 
-                                                     update=":form:datatable, :form:growl"> 
-
+                                                       
 
                                     </p:commandButton>
 
@@ -193,22 +143,7 @@
 
                             </h:form>
                         </p:dialog>   
-
-
-
-
-
-
                     </h:panelGroup>
-                    
-                    
-                     <p:dialog header="Selected Cars" widgetVar="multiCarDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" width="220">
-        <p:outputPanel id="multiCarDetail" style="text-align:center;">
-          
-            <h:outputText value="#{paisPageController.paisSelected.idpais}"/>
-        
-        </p:outputPanel>
-    </p:dialog>
 
                 </h:form>
 
