@@ -5,7 +5,10 @@
  */
 package com.material.controllers;
 
+import com.avbravo.jmoordb.configuration.JmoordbConfiguration;
 import com.avbravo.jmoordb.configuration.JmoordbConnection;
+import com.avbravo.jmoordb.mongodb.history.repository.RevisionHistoryRepository;
+import com.avbravo.jmoordb.services.RevisionHistoryServices;
 import java.io.Serializable;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.ApplicationScoped;
@@ -23,7 +26,10 @@ import org.eclipse.microprofile.config.inject.ConfigProperty;
 public class IndexController implements Serializable{
 @Inject
     private Config config;
-
+ @Inject
+    RevisionHistoryRepository revisionHistoryRepository;
+    @Inject
+    RevisionHistoryServices revisionHistoryServices;
 @Inject
     @ConfigProperty(name="mongodbsrv", defaultValue="")
     private String mongodbsrv;
@@ -35,14 +41,23 @@ public class IndexController implements Serializable{
 
         //Configuracion de la base de datos
         JmoordbConnection jmc = new JmoordbConnection.Builder()                
-                .withUri(mongodbsrv)
+                .withUri(mongodbsrv)                
                 .build();
         
 //        JmoordbConnection jmc = new JmoordbConnection.Builder()                
 //                .withUri("mongodb+srv://avbravo:denver16@cluster0.myzbr.mongodb.net/test?retryWrites=true&w=majority")
 //                .build();
         
+    JmoordbConfiguration jc = new JmoordbConfiguration.Builder()
+                    .withSpanish(true)
+                    .withRepositoryRevisionHistory(revisionHistoryRepository)
+                    .withRevisionHistoryServices(revisionHistoryServices)
+                    .withRevisionSave(true)
+                    .withUsername("demo")
+                    .build();
 
+//            JmoordbContext.put("jmoordb_user", usuario);
+//            JmoordbContext.put("jmoordb_rol", rol);
          System.out.println("invocando conexion");
     }
     

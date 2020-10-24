@@ -28,6 +28,9 @@ public class PaisController implements Serializable {
     PaisRepository paisRepository;
     Pais pais = new Pais();
     List<Pais> listPais = new ArrayList<Pais>();
+    
+    
+    
 
     @Inject
     PaisServices paisServices;

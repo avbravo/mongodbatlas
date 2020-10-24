@@ -83,16 +83,21 @@
         <!--
                         jmoordb stack
         -->
-        <dependency>
+<!--        <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordb</artifactId>
             <version>0.73</version>
         </dependency>
-        
+        -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>jmoordb</artifactId>
+            <version>0.73.100</version>
+        </dependency>
         <dependency>
             <groupId>com.github.avbravo</groupId>
             <artifactId>jmoordbjsf</artifactId>
-            <version>0.63</version>
+            <version>0.69</version>
         </dependency>
        
         <dependency>
@@ -100,7 +105,11 @@
             <artifactId>jmoordbutils</artifactId>
             <version>1.16</version>
         </dependency>
-        
+          <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.14</version>
+        </dependency>
     </dependencies>
     
     <build>

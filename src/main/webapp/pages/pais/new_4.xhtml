@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<ui:composition   template="/WEB-INF/layout/template.xhtml"
+                  xmlns="http://www.w3.org/1999/xhtml"
+                  xmlns:h="http://xmlns.jcp.org/jsf/html"
+                  xmlns:f="http://xmlns.jcp.org/jsf/core"
+                  xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                  xmlns:p="http://primefaces.org/ui"
+                  xmlns:jmoordbjsf="http://jmoordbjsf.com/taglib"
+                  xmlns:b="http://bootsfaces.net/ui">
+
+
+
+    <ui:define name="titulo">#{msg['title.pagina']} - #{msg['application.title']}</ui:define>
+
+    <ui:define name="contenido">
+        <h:outputStylesheet library="css" name="extras.css"/>
+        <h:outputStylesheet name="primeicons/primeicons.css" library="primefaces" />
+
+        <p:messages  closable="true" >
+            <p:autoUpdate />
+        </p:messages>
+
+
+        <!-- START CONTENT -->
+        <section id="content">
+            <div class="container">
+
+
+        <h:form id="form"  prependId="false"   onkeypress="if (event.keyCode == 13) {
+                     return false;
+                 }">
+            <h:panelGroup id="content" layout="block"> 
+
+                <jmoordbjsf:messages id="msg"/>
+                 <jmoordbjsf:toolbarnew label="#{msg['field.idpais']}"
+                                       title="#{msg['titleview.pais']}"
+                                       value="#{paisController1.pais.idpais}"
+                                       disabled="#{paisController1.writable}"
+                                       rendererList="true"
+                                       controller="#{paisController1}"                                       
+                                       url  = "/pages/pais/list.xhtml"
+
+                                       />
+                <b:panel collapsible="false" title="#{app['title.data']}" look="primary"  rendered="#{paisController1.writable}">
+
+                    <b:panelGrid id="panel" colSpans="2,10" size="xs" > 
+
+                  
+
+                        <p:outputLabel  value="#{msg['field.pais']}" />
+                        <jmoordbjsf:inputText value="#{paisController1.pais.pais}" id="pais"  label="#{msg['field.pais']}" />
+
+                    
+                      <p:commandButton rendered="true"                          
+                         value="#{app['button.save']}"
+                         icon="fa fa-floppy-o"
+                         title="#{app['button.save']}"
+                
+                         action="#{paisController1.save()}"
+                         update=":form:content" > 
+           
+
+        </p:commandButton>
+
+
+                    </b:panelGrid>                    
+                </b:panel>
+            </h:panelGroup>
+        </h:form>
+
+     
+        
+            </div>
+            <!--end container-->
+
+        </section>
+        <!-- END CONTENT -->
+        <!-- ================================================================================================
+                                                      Scripts
+                      ===================================================================================================== -->
+        <jmoordbjsf:materialized-js />
+
+
+
+    </ui:define>
+
+</ui:composition>
