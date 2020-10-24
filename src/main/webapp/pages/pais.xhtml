@@ -86,16 +86,12 @@
                                 <p:column headerText="" style="width:80px">
 
                                     <p:commandButton 
-
                                         icon="fa fa-edit" 
-                                        title="#{app['button.edit']}"  
-
-
+                                        title="#{app['button.edit']}" 
                                         oncomplete="PF('dialogView').show();" 
                                         update=":form:panelGroupView"
                                         > 
                                         <f:setPropertyActionListener value="#{item}" target="#{paisPageController.pais}" />
-
                                     </p:commandButton>
                                 </p:column>
 

@@ -53,3 +53,42 @@ JAR
 
 Swagger
 http://avbravo:9001/autentificacion/resources/openapi-ui/index.html
+
+#------------------------------------------------------
+CREAR EL ARQUETIPO
+#-----------------------------------------------------
+PASOS:
+1.
+cd mongodbatlas
+2.
+mvn archetype:create-from-project
+
+Genera
+ Setting default groupId: com.avbravo
+[INFO] Setting default artifactId: mongodbatlas
+[INFO] Setting default version: 0.1.201
+[INFO] Setting default package: com.material
+3.
+cd target/generated-sources/archetype/
+
+4. ejecutar
+mvn install
+
+Genera
+ Processing Archetype IT project: basic
+[INFO] ----------------------------------------------------------------------------
+[INFO] Using following parameters for creating project from Archetype: mongodbatlas-archetype:0.1.201
+
+
+#----------------------------------------------------------------------------------
+CREAR PROYECTO EN BASE AL ARQUETIPO
+#--------------------------------------------------------------------------------
+PASOS:
+Crear proyecto
+mkdir webmongo
+Entrar
+cd webmongo
+3 Ejeectuar:
+
+mvn archetype:generate -Dfilter=mongodbatlas-archetype   -DarchetypeVersion=0.1 -DartifactId=nombre-proyecto -Dversion=1.0-SNAPSHOT -DarchetypeGroupId=com.avbravo  -DgroupId=com.avbravo
+
