@@ -95,9 +95,9 @@ mvn archetype:generate -Dfilter=mongodbatlas-archetype   -DarchetypeVersion=0.1 
 
 
 #-----------------------------------------
-# CONECTARSE A MONGODB
+# CONECTARSE A MONGODB DESDE CONSOLA
 #--------------------------------------
-
+mongo "mongodb+srv://avbravo:denver16@cluster0.myzbr.mongodb.net/test?retryWrites=true&w=majority"
 #----
 Before
 #-*------------------------
