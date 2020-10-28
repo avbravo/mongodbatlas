@@ -18,7 +18,12 @@ public class Pais {
     @Id
     private String idpais;
     private String pais;
+@Embedded
+    List<UserInfo> userInfo;
 
+
+    public Pais() {
+    }
     public List<UserInfo> getUserInfo() {
         return userInfo;
     }
@@ -26,10 +31,7 @@ public class Pais {
     public void setUserInfo(List<UserInfo> userInfo) {
         this.userInfo = userInfo;
     }
-   @Embedded
-    List<UserInfo> userInfo;
-    public Pais() {
-    }
+   
 
     public Pais(String idpais, String pais) {
         this.idpais = idpais;
