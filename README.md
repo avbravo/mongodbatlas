@@ -93,6 +93,11 @@ cd webmongo
 mvn archetype:generate -Dfilter=mongodbatlas-archetype   -DarchetypeVersion=0.1 -DartifactId=nombre-proyecto -Dversion=1.0-SNAPSHOT -DarchetypeGroupId=com.avbravo  -DgroupId=com.avbravo
 
 
+
+#-----------------------------------------
+# CONECTARSE A MONGODB
+#--------------------------------------
+
 #----
 Before
 #-*------------------------
